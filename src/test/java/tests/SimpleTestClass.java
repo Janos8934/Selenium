@@ -14,6 +14,8 @@ import org.testng.SkipException;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
+import java.time.Duration;
+
 public class SimpleTestClass {
 
     WebDriver driver;
@@ -29,6 +31,7 @@ public class SimpleTestClass {
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         driver = new ChromeDriver(options);
         driver.manage().window().setSize(new Dimension(1920,1080));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         //driver.manage().window().maximize();
         //driver.manage().window().fullscreen();
     }
