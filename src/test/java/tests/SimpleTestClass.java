@@ -89,6 +89,8 @@ public class SimpleTestClass {
         driver.findElement(By.id("login-email")).sendKeys("szabo.janos@testerlab.io");
         driver.findElement(By.name("password")).sendKeys("testerlab");
         driver.findElement(By.cssSelector(".content-update-box .btn")).click();
+        String welcomeMessage = driver.findElement(By.cssSelector(".toast-message")).getText();
+        Assert.assertEquals(welcomeMessage, "Welcome Janos Szabo");
         int a = driver.findElements(By.cssSelector(".user-box")).size();
         Assert.assertEquals(a, 1, "Login failed");
     }
