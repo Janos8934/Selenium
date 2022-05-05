@@ -4,11 +4,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.SessionStorage;
 import org.openqa.selenium.html5.WebStorage;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.*;
@@ -89,6 +92,8 @@ public class SimpleTestClass {
         Assert.assertFalse(b);
         Assert.assertEquals("alma","alma");*/
         driver.get("http://testerhub-demo-app-staging.uat.ding.hu/home/login");
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        //wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".content-update-box .btn")));
         driver.findElement(By.id("login-email")).sendKeys("szabo.janos@testerlab.io");
         driver.findElement(By.name("password")).sendKeys("testerlab");
         driver.findElement(By.cssSelector(".content-update-box .btn")).click();
@@ -121,6 +126,40 @@ public class SimpleTestClass {
         soft.assertEquals("xyz", "abc");
         soft.assertEquals("szilva", "alma");
         soft.assertAll();
+    }
+
+    @Test
+    public void test5(){
+        String actualURL = driver.getCurrentUrl();
+        Assert.assertEquals(actualURL, "http://testerhub-demo-app-staging.uat.ding.hu/");
+    }
+
+    @Test
+    public void test6(){
+        driver.get("http://testerhub-demo-app-staging.uat.ding.hu/home/login");
+        WebElement element = driver.findElement(By.id("login-email"));
+        element.sendKeys("szabo.janos@testerlab.io");
+        Assert.assertEquals(element.getAttribute("value"), "szabo.janos@testerlab.io");
+        element.clear();
+        Assert.assertEquals(element.getAttribute("value"), "");
+    }
+
+    @Test
+    public void test7(){
+        driver.findElement(By.cssSelector(".btn-sign-in")).click();
+        Assert.assertEquals(driver.getCurrentUrl(), "http://testerhub-demo-app-staging.uat.ding.hu/home/login");
+        driver.navigate().back();
+        Assert.assertEquals(driver.getCurrentUrl(), "http://testerhub-demo-app-staging.uat.ding.hu/");
+        driver.navigate().forward();
+        Assert.assertEquals(driver.getCurrentUrl(), "http://testerhub-demo-app-staging.uat.ding.hu/home/login");
+        driver.navigate().refresh();
+        Assert.assertEquals(driver.getCurrentUrl(), "http://testerhub-demo-app-staging.uat.ding.hu/home/login");
+    }
+
+    @Test
+    public void test8(){
+        String title = driver.getTitle();
+        Assert.assertEquals(title, "Home | Academy");
     }
 
 }
