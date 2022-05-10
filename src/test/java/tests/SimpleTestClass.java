@@ -19,8 +19,8 @@ import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
-public class SimpleTestClass {
-
+public class SimpleTestClass extends SetDriver {
+/*
     WebDriver driver;
 
     @BeforeSuite
@@ -82,7 +82,7 @@ public class SimpleTestClass {
         localStorage.clear();
         sessionStorage.clear();
     }
-
+*/
     @Test
     public void test1(){
        /* System.out.println("test1");
