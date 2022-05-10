@@ -164,14 +164,14 @@ public class SimpleTestClass extends SetDriver {
 
     @Test
     public void test9(){
-        driver.get("https://janosszabo.hu/selenium");
+        driver.get("https://<test_system>/selenium");
         boolean button = driver.findElement(By.id("disabledButton")).isEnabled();
         Assert.assertFalse(button);
     }
 
     @Test
     public void test10(){
-        driver.get("https://janosszabo.hu/selenium");
+        driver.get("https://<test_system>/selenium");
         boolean hideButton = driver.findElement(By.id("hiddenButton")).isDisplayed();
         Assert.assertTrue(hideButton);
         driver.findElement(By.name("actionButton")).click();
@@ -181,7 +181,7 @@ public class SimpleTestClass extends SetDriver {
 
     @Test
     public void test11() throws InterruptedException {
-        driver.get("https://janosszabo.hu/selenium");
+        driver.get("https://<test_system>/selenium");
         driver.findElement(By.cssSelector(".alert")).click();
         System.out.println(driver.switchTo().alert().getText());
         driver.switchTo().alert().accept();

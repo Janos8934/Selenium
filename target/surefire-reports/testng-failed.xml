@@ -5,17 +5,13 @@
     <classes>
       <class name="tests.SimpleTestClass">
         <methods>
-          <include name="beforeClass"/>
           <include name="test2"/>
+          <include name="getPage"/>
           <include name="test4"/>
+          <include name="clearStorage"/>
           <include name="test3"/>
-          <include name="beforeMethod"/>
-          <include name="afterTest"/>
-          <include name="beforeSuite"/>
-          <include name="afterClass"/>
-          <include name="afterSuite"/>
-          <include name="beforeTest"/>
-          <include name="afterMethod"/>
+          <include name="closeDriver"/>
+          <include name="setDriver"/>
         </methods>
       </class> <!-- tests.SimpleTestClass -->
     </classes>

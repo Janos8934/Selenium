@@ -1,1 +1,4 @@
 tests/SimpleTestClass.class
+tests/SetDriver.class
+pages/LoginPage.class
+tests/PomTest.class
